@@ -1,4 +1,3 @@
-using JwtAuthenticationTool.Configurations.Interfaces;
 using JwtAuthenticationTool.Services.Interfaces;
 using JwtAuthenticationTool.Utils;
 using Microsoft.AspNetCore.Http;
@@ -9,13 +8,14 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using JwtAuthenticationTool.Configurations;
 
 namespace JwtAuthenticationTool.Middlewares {
     public class JwtMiddleware {
         private readonly RequestDelegate _next;
         private readonly TokenDecoder _tokenDecoder;
 
-        public JwtMiddleware(RequestDelegate next, IOptions<IAppSettings> appSettings)
+        public JwtMiddleware(RequestDelegate next, IOptions<AppSettings> appSettings)
         {
             _next = next;
             _tokenDecoder = new TokenDecoder(appSettings.Value.Secret);

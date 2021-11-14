@@ -2,16 +2,17 @@
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
-using JwtAuthenticationTool.Configurations.Interfaces;
+using JwtAuthenticationTool.Configurations;
 using JwtAuthenticationTool.Entities.Interfaces;
+using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 
 namespace JwtAuthenticationTool.Utils {
     public class TokenEncoder {
         private readonly byte[] _byteSecret;
         
-        public TokenEncoder(IAppSettings appSettings) {
-            _byteSecret = Encoding.ASCII.GetBytes(appSettings.Secret);    
+        public TokenEncoder(IOptions<AppSettings> appSettings) {
+            _byteSecret = Encoding.ASCII.GetBytes(appSettings.Value.Secret);    
         }
         
         public string GetJwtToken(IUserEntity user) {

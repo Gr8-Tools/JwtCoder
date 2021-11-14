@@ -12,7 +12,7 @@ namespace JwtAuthenticationTool.Utils {
         /// Получает пользователя из заголовка
         /// </summary>
         public static IUserEntity? GetUser(this HttpContext context) {
-            if (!context.Items.TryGetValue("User", out var user)) {
+            if (context.Items.TryGetValue("User", out var user)) {
                 return user as IUserEntity;
             }
             return null;
