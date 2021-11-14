@@ -1,5 +1,3 @@
-using System.ComponentModel.DataAnnotations;
-
 namespace JwtAuthenticationTool.Models.Interfaces {
     /// <summary>
     /// Запрос аутентификации
