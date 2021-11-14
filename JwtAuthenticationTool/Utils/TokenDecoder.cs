@@ -1,33 +1,17 @@
-﻿using JwtAuthenticationTool.Services.Interfaces;
-using Microsoft.AspNetCore.Http;
-using Microsoft.IdentityModel.Tokens;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
-using System.Security.Claims;
 using System.Text;
-using System.Threading.Tasks;
-using JwtAuthenticationTool.Entities.Interfaces;
+using JwtAuthenticationTool.Services.Interfaces;
+using Microsoft.AspNetCore.Http;
+using Microsoft.IdentityModel.Tokens;
 
 namespace JwtAuthenticationTool.Utils {
-    internal class TokenProcessor {
+    internal class TokenDecoder {
         private readonly byte[] _byteSecret;
 
-        internal TokenProcessor(string secret) {
+        internal TokenDecoder(string secret) {
             _byteSecret = Encoding.ASCII.GetBytes(secret);
-        }
-
-        internal string GetJwtToken(IUserEntity user) {
-            var tokenHandler = new JwtSecurityTokenHandler();
-            var tokenDescriptor = new SecurityTokenDescriptor
-            {
-                Subject = new ClaimsIdentity(new[] { new Claim("id", user.Id.ToString()) }),
-                Expires = DateTime.UtcNow.AddDays(7),
-                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(_byteSecret), SecurityAlgorithms.HmacSha256Signature)
-            };
-            var token = tokenHandler.CreateToken(tokenDescriptor);
-            return tokenHandler.WriteToken(token);
         }
 
         internal void AttachUserToContext(HttpContext context, IUserService userService) {
