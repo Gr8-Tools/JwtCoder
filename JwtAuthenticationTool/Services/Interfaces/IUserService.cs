@@ -9,11 +9,11 @@ namespace JwtAuthenticationTool.Services.Interfaces
         /// <summary>
         /// Returns Authenticate result
         /// </summary>
-        Task<IAuthenticateResponse> Authenticate(IAuthenticateRequest model);
+        Task<IAuthenticateResponse?> Authenticate(IAuthenticateRequest model);
         
         /// <summary>
         /// Returns user by it's ID
         /// </summary>
-        Task<IUserEntity> GetById(int id);
+        Task<IUserEntity?> GetById(int id);
     }
 }

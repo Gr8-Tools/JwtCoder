@@ -37,7 +37,10 @@ namespace JwtAuthenticationTool.Utils {
                 var userId = int.Parse(jwtToken.Claims.First(x => x.Type == "id").Value);
 
                 // attach user to context on successful jwt validation
-                context.SaveUser(userService.GetById(userId).GetAwaiter().GetResult());
+                var user = userService.GetById(userId).GetAwaiter().GetResult();
+                if (!ReferenceEquals(user, null)) {
+                    context.SaveUser(user);   
+                }
             }
             catch
             {
