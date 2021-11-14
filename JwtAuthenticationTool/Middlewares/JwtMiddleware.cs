@@ -13,16 +13,16 @@ using System.Threading.Tasks;
 namespace JwtAuthenticationTool.Middlewares {
     public class JwtMiddleware {
         private readonly RequestDelegate _next;
-        private readonly TokenProcessor tokenProcessor;
+        private readonly TokenProcessor _tokenProcessor;
 
         public JwtMiddleware(RequestDelegate next, IOptions<IAppSettings> appSettings)
         {
             _next = next;
-            tokenProcessor = new TokenProcessor(appSettings.Value.Secret);
+            _tokenProcessor = new TokenProcessor(appSettings.Value.Secret);
         }
 
         public async Task Invoke(HttpContext context, IUserService userService) {
-            tokenProcessor.AttachUserToContext(context, userService);
+            _tokenProcessor.AttachUserToContext(context, userService);
 
             await _next(context);
         }

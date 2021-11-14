@@ -1,7 +1,7 @@
-﻿using JwtAuthenticationTool.Entities.Intrefaces;
-using JwtAuthenticationTool.Models;
+﻿using JwtAuthenticationTool.Models;
 using JwtAuthenticationTool.Models.Interfaces;
 using System.Threading.Tasks;
+using JwtAuthenticationTool.Entities.Interfaces;
 
 namespace JwtAuthenticationTool.Services.Interfaces
 {

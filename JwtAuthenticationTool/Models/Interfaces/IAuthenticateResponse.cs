@@ -1,6 +1,4 @@
-using JwtAuthenticationTool.Entities.Intrefaces;
-
-namespace JwtAuthenticationTool.Models{
+namespace JwtAuthenticationTool.Models.Interfaces{
     
     /// <summary>
     /// Ответ аутентификации

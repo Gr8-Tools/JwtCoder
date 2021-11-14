@@ -1,5 +1,4 @@
-﻿using JwtAuthenticationTool.Entities.Intrefaces;
-using JwtAuthenticationTool.Services.Interfaces;
+﻿using JwtAuthenticationTool.Services.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.IdentityModel.Tokens;
 using System;
@@ -9,6 +8,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using JwtAuthenticationTool.Entities.Interfaces;
 
 namespace JwtAuthenticationTool.Utils {
     internal class TokenProcessor {
