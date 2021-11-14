@@ -1,9 +1,8 @@
-using JwtAuthenticationTool.Entities.Intrefaces;
+using System;
+using JwtAuthenticationTool.Utils;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
-using System;
-using JwtAuthenticationTool.Utils;
 
 [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
 public class AuthorizeAttribute : Attribute, IAuthorizationFilter {
